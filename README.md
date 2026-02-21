@@ -1,0 +1,3 @@
+# Raymarched Backgrounds
+
+I was getting kind of tired of my background low-key, so I wanted to find some new ones. The only problem is that I wasn't really feeling any of the ones I saw online; a lot of them were also AI-slop. So I am going to make this. I want to make something that is tranquil, and doesn't keep me up, and is relaxing, something easy on the eyes. Ideally, it is also very procedual in the sense that I can just run this program, and it spits out a brand new very nice background. I think I want to make something simmilar to that one planet generator program, [terragen](https://www.youtube.com/watch?v=1w6TCOeNUp4).
