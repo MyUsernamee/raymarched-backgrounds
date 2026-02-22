@@ -2,7 +2,6 @@
 
 #include <glm/glm.hpp>
 
-
 struct SignedDistanceData {
     double specular=1.0;
     double roughness=1.0;

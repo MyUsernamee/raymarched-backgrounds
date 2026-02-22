@@ -3,19 +3,19 @@
 #include "image.h"
 #include "renderer.h"
 #include "ray.h"
-#include <cstdint>
+#include "sdf.h"
 #include <cstdio>
 #include <cstdlib>
+#include <glm/ext/matrix_transform.hpp>
 #include <glm/geometric.hpp>
+#include <glm/ext.hpp>
 
-SignedDistanceData basic_sphere(glm::vec3 position) {
+SignedDistanceData scene(glm::vec3 position) {
+    glm::mat4 rotation = glm::rotate(glm::mat4(1.0), (float)PI / 4.0f, glm::vec3(1.0));
 
-    float distance = glm::length(position) - 1.0;
-    
-    SignedDistanceData result;
-    result.distance = distance;
+    SignedDistanceData data = cylinder(rotation * glm::vec4(position, 1.0));
 
-    return result;
+    return data;
 }
 
 int main() {
@@ -28,12 +28,12 @@ int main() {
     Renderer renderer;
     renderer.max_distance = 10.0f;
     renderer.fov = PI / 2.0f;
-    renderer.signed_distance_function = basic_sphere;
+    renderer.signed_distance_function = scene;
     renderer.view_matrix = glm::mat4(1.0);
     renderer.view_matrix[3] = glm::vec4(-2.0, 0.0, 0.0, 1.0);
     
     RayData data;
-    march_ray(basic_sphere, glm::vec3(-3.0, 0.0, 0.0), glm::vec3(3.0, 0.0, 0.0), &data);
+    march_ray(scene, glm::vec3(-3.0, 0.0, 0.0), glm::vec3(3.0, 0.0, 0.0), &data);
 
     printf("EPSILON: %f\n", float(EPSILON));
     printf("Ray Distance: %f\n", data.t);
