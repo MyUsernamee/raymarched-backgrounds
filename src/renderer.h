@@ -5,11 +5,11 @@
 #include "ray.h"
 
 struct Renderer {
-    float fov;
-    float max_distance;
+    double fov;
+    double max_distance;
     sdf_func signed_distance_function;
-    glm::mat4 view_matrix;
-    // glm::mat4 projection_matrix; TODO: Use this?
+    glm::dmat4 view_matrix;
+    // glm::dmat4 projection_matrix; TODO: Use this?
 };
 
 void render_scene(Renderer renderer, Image image);
