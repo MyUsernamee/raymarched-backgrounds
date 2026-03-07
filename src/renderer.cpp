@@ -1,10 +1,7 @@
 #include "renderer.h"
 #include "image.h"
 #include "ray.h"
-<<<<<<< HEAD
-=======
 #include "rand.h"
->>>>>>> 2a4017a (A rand.h and some basic random functions)
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
