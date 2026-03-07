@@ -18,6 +18,12 @@ find_package(glm)
 
 file(GLOB_RECURSE SOURCES src/*.cpp)
 
-add_executable(${PROJECT_NAME} ${SOURCES})
-target_link_libraries(${PROJECT_NAME} PRIVATE raylib glm::glm)
-target_include_directories(${PROJECT_NAME} PRIVATE ${fastnoise_SOURCE_DIR}/C/)
+add_executable(bg_raymarcher ${SOURCES})
+target_link_libraries(bg_raymarcher PRIVATE raylib glm::glm)
+target_include_directories(bg_raymarcher PRIVATE ${fastnoise_SOURCE_DIR}/C/)
+
+add_executable(vector_visuals ${SOURCES} bins/vector_visuals.cpp)
+target_link_libraries(vector_visuals PRIVATE raylib glm::glm)
+target_include_directories(vector_visuals PRIVATE ${fastnoise_SOURCE_DIR}/C/ src/)
+
+

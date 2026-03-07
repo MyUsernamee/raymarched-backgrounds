@@ -2,42 +2,22 @@
 #include "image.h"
 #include "ray.h"
 #include "rand.h"
+#define _USE_MATH_DEFINES
 #include <cmath>
 #include <cstdint>
 #include <cstdio>
 #include <cstdlib>
+#include <glm/ext/vector_double3.hpp>
 #include <glm/geometric.hpp>
 
 glm::dvec3 calculate_atmosphereic_contribution(Renderer renderer, glm::dvec3 ray_origin, glm::dvec3 ray_end) {
     return glm::dvec3(1.0);
 }
 
-glm::dvec3 transport_light(glm::vec3 position, RayData ray_data, int depth) {
+glm::dvec3 calculate_reflectance(glm::vec3 position, RayData ray_data, int depth) {
     // Attempts to approximate a solution to the rendering equation using a stocahstic monte carlo method.
     // i.e. Averaging a bunch of noise.
     return glm::dvec3(0.0);
-}
-
-/// Generates a random unit vector on a hemisphere
-/// Where the hemisphere is oriented with the normal.
-/// i.e. v dot n > 0. Where n is the normal and v is the 
-/// generated unit vector.
-glm::vec3 sample_hemisphere(glm::vec3 normal) {
-    double x, y;
-    x = random(-1.0, 1.0);
-    y = random(-1.0, 1.0);
-    double z = std::sqrt(x * x + y * y);
-    
-    glm::vec3 result = glm::vec3(x, y, z);
-
-    if (glm::dot(result, normal) <= 0)
-        result = -result;
-    
-    return result;
-}
-
-void calculate_reflectance(sdf_func func) {     
-    
 }
 
 void render_scene(Renderer renderer, Image result) {
