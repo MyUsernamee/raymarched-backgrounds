@@ -1,4 +1,5 @@
 #include "rand.h"
+#include <cstdio>
 #include <cstdlib>
 #include <glm/ext/vector_float3.hpp>
 #include <time.h>
@@ -21,10 +22,11 @@ glm::vec3 random(glm::vec3 min, glm::vec3 max) {
 }
 
 glm::dvec3 sample_hemisphere(glm::dvec3 normal) {
-    double theta = random(0, M_PI_2);
-    double x = cos(theta);
-    double y = sin(theta);
-    double z = std::sqrt(1 - (x * x + y * y));
+    double theta = random(.0, M_PI * 2.0f);
+    double u = random(.0, 1.0);
+    double x = cos(theta) * u;
+    double y = sin(theta) * u;
+    double z = std::sqrt(1.0 - u * u); // TODO: Probably some sort of optimization here?
     
     glm::dvec3 result = glm::dvec3(x, y, z);
 
